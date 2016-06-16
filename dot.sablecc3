@@ -1,0 +1,114 @@
+Package dot;
+
+////////////////////////////////////////////////////////////////////////////////
+
+Helpers
+
+  // aka the section I'm glad was Googleable
+
+  tab                     = 9;
+  cr                      = 13;
+  lf                      = 10;
+  digit                   = ['0'..'9'];
+  lowercase               = ['a'..'z'];
+  uppercase               = ['A'..'Z'];
+  letter                  = lowercase | uppercase;
+  idletter                = letter | '_';
+  idchar                  = letter | '_' | digit;
+  all                     = [0..0xffff];
+  not_cr_lf               = [all - [cr + lf]];
+  not_star                = [all - '*'];
+  not_star_slash          = [not_star - '/'];
+  eol                     = cr | lf | cr lf;
+  short_comment           = '//' not_cr_lf* eol;
+  long_comment            = '/*' not_star* '*'+ (not_star_slash not_star* '*'+)* '/';
+
+////////////////////////////////////////////////////////////////////////////////
+
+Tokens
+
+  // These are ripped directly from the Lexer
+
+  equals                  = '=';
+  semicolon               = ';';
+  colon                   = ':';
+  comma                   = ',';
+  l_cb                    = '{';
+  r_cb                    = '}';
+  l_br                    = '[';
+  r_br                    = ']';
+  quote                   = '"';
+  directed_edge           = '->';
+  undirected_edge         = '--';
+  strict                  = 'strict';
+  digraph                 = 'digraph';
+  subgraph                = 'subgraph';
+  graph                   = 'graph';
+  node                    = 'node';
+  edge                    = 'edge';
+  
+  comment                 = short_comment | long_comment;
+  
+  eol                     = eol;
+  blank                   = (' ' | tab | eol)+;
+  number                  = '0'| [digit-'0'] digit*;
+  id                      = idletter idchar*;
+
+////////////////////////////////////////////////////////////////////////////////
+
+Ignored Tokens
+
+  // The less said here the better
+
+  blank, eol, comment, semicolon;
+
+////////////////////////////////////////////////////////////////////////////////
+
+Productions
+
+// These are the Productions that actually, you know, produce something
+
+node_id 
+  {-> create_single_node} = [name]:T.id {-> New create_single_node(name)};
+
+edge_statement 
+  {-> create_pc_nodes}    = {node_id} [parent]:T.id edgeop [child]:T.id attribute_list? 
+                              {-> New create_pc_nodes(parent, child)};
+
+// These Productions result in good parsing, but nothing in the AST 
+
+id                        = [name]:T.id;
+statement_list            = statement? statement_list?;
+node_statement            = node_id attribute_list?;
+
+assignment                = {directed}   [left]:T.id directed_edge [right]:T.id
+                          | {undirected} [left]:T.id undirected_edge [right]:T.id;
+
+graph_type                = {undirected} strict? graph T.id? l_cb statement_list r_cb
+                          | {directed} strict? digraph T.id? l_cb statement_list r_cb;
+
+statement                 = {node_statement} node_statement
+                          | {edge_statement} edge_statement
+                          | {attribute_statement} attribute_statement
+                          | {assignment} [left]:T.id equals [right]:T.id
+                          | {subgraph} subgraph_statement;
+
+edgeop                    = {directed}   directed_edge 
+                          | {undirected} undirected_edge;
+
+attribute_statement       = {graph} graph attribute_list
+                          | {node} node attribute_list
+                          | {edge} edge attribute_list;
+
+attribute_list            = l_br assignment_list? r_br attribute_list?;
+assignment_list           = [left]:T.id equals [right]:T.id comma? assignment_list?;
+subgraph_statement        = {subgraph} subgraph? T.id? l_cb statement_list r_cb;
+
+////////////////////////////////////////////////////////////////////////////////
+
+Abstract Syntax Tree
+
+// Only create things in the AST when creating a node or a parent-child pair
+
+create_single_node        = [name]:id;
+create_pc_nodes           = [parent]:id [child]:id;
