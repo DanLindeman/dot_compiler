@@ -12,31 +12,28 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseACreateSingleNode(ACreateSingleNode node);
+    void caseACreateGraph(ACreateGraph node);
+    void caseACreateNode(ACreateNode node);
     void caseACreatePcNodes(ACreatePcNodes node);
 
     void caseTEquals(TEquals node);
     void caseTSemicolon(TSemicolon node);
-    void caseTColon(TColon node);
     void caseTComma(TComma node);
     void caseTLCb(TLCb node);
     void caseTRCb(TRCb node);
     void caseTLBr(TLBr node);
     void caseTRBr(TRBr node);
-    void caseTQuote(TQuote node);
     void caseTDirectedEdge(TDirectedEdge node);
     void caseTUndirectedEdge(TUndirectedEdge node);
     void caseTStrict(TStrict node);
     void caseTDigraph(TDigraph node);
-    void caseTSubgraph(TSubgraph node);
     void caseTGraph(TGraph node);
-    void caseTNode(TNode node);
-    void caseTEdge(TEdge node);
+    void caseTSubgraph(TSubgraph node);
     void caseTComment(TComment node);
     void caseTEol(TEol node);
     void caseTBlank(TBlank node);
-    void caseTNumber(TNumber node);
     void caseTId(TId node);
+    void caseTType(TType node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }

@@ -10,11 +10,16 @@ Helpers
   cr                      = 13;
   lf                      = 10;
   digit                   = ['0'..'9'];
+  digit_sequence          = digit+;
+  number                  = digit_sequence? '.' digit_sequence | digit_sequence '.' | digit;
+  quote                   = '"';
   lowercase               = ['a'..'z'];
   uppercase               = ['A'..'Z'];
   letter                  = lowercase | uppercase;
   idletter                = letter | '_';
-  idchar                  = letter | '_' | digit;
+  idchar                  = letter | '_' | '\' | number;
+  string_char             = letter | '_' | '\' | number | ' ';
+  string                  = quote string_char* quote;
   all                     = [0..0xffff];
   not_cr_lf               = [all - [cr + lf]];
   not_star                = [all - '*'];
@@ -22,6 +27,12 @@ Helpers
   eol                     = cr | lf | cr lf;
   short_comment           = '//' not_cr_lf* eol;
   long_comment            = '/*' not_star* '*'+ (not_star_slash not_star* '*'+)* '/';
+  semicolon               = ';';
+  comma                   = ',';
+  graph                   = 'graph';
+  node                    = 'node';
+  edge                    = 'edge';
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -31,28 +42,25 @@ Tokens
 
   equals                  = '=';
   semicolon               = ';';
-  colon                   = ':';
   comma                   = ',';
   l_cb                    = '{';
   r_cb                    = '}';
   l_br                    = '[';
   r_br                    = ']';
-  quote                   = '"';
+
   directed_edge           = '->';
   undirected_edge         = '--';
   strict                  = 'strict';
   digraph                 = 'digraph';
-  subgraph                = 'subgraph';
   graph                   = 'graph';
-  node                    = 'node';
-  edge                    = 'edge';
-  
+  subgraph                = 'subgraph';
+
   comment                 = short_comment | long_comment;
-  
+
   eol                     = eol;
   blank                   = (' ' | tab | eol)+;
-  number                  = '0'| [digit-'0'] digit*;
-  id                      = idletter idchar*;
+  id                      = idchar* | string;
+  type                    = graph | node | edge;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -66,49 +74,47 @@ Ignored Tokens
 
 Productions
 
-// These are the Productions that actually, you know, produce something
+// These are the Productions that actually produce something
 
-node_id 
-  {-> create_single_node} = [name]:T.id {-> New create_single_node(name)};
 
-edge_statement 
-  {-> create_pc_nodes}    = {node_id} [parent]:T.id edgeop [child]:T.id attribute_list? 
+graph
+  {-> create_graph}       =  T.strict? graph_type [name]:T.id l_cb statement_list r_cb
+                                {-> New create_graph(name)};
+
+edge_stmt
+  {-> create_pc_nodes}    = [parent]:T.id edgeop [child]:T.id attribute_list?
                               {-> New create_pc_nodes(parent, child)};
 
-// These Productions result in good parsing, but nothing in the AST 
+node_stmt
+  {-> create_node}        = [name]:T.id attribute_list?
+                            {-> New create_node(name)};
 
-id                        = [name]:T.id;
-statement_list            = statement? statement_list?;
-node_statement            = node_id attribute_list?;
+graph_type                = {d} T.digraph
+                          | {u} T.graph;
 
-assignment                = {directed}   [left]:T.id directed_edge [right]:T.id
-                          | {undirected} [left]:T.id undirected_edge [right]:T.id;
+id                        = T.id;
 
-graph_type                = {undirected} strict? graph T.id? l_cb statement_list r_cb
-                          | {directed} strict? digraph T.id? l_cb statement_list r_cb;
+statement_list            = statement statement_list?;
 
-statement                 = {node_statement} node_statement
-                          | {edge_statement} edge_statement
-                          | {attribute_statement} attribute_statement
-                          | {assignment} [left]:T.id equals [right]:T.id
-                          | {subgraph} subgraph_statement;
+edgeop                    = {d} directed_edge
+                          | {u} undirected_edge;
 
-edgeop                    = {directed}   directed_edge 
-                          | {undirected} undirected_edge;
+statement                 = {node} node_stmt
+                          | {edge} edge_stmt
+                          | {attr} type attribute_list;
 
-attribute_statement       = {graph} graph attribute_list
-                          | {node} node attribute_list
-                          | {edge} edge attribute_list;
+attribute_list            = l_br assignment_list? r_br;
 
-attribute_list            = l_br assignment_list? r_br attribute_list?;
-assignment_list           = [left]:T.id equals [right]:T.id comma? assignment_list?;
-subgraph_statement        = {subgraph} subgraph? T.id? l_cb statement_list r_cb;
+assignment_list           = assignment
+                          | {list} assignment comma assignment_list;
+
+assignment                = [left]:P.id equals [right]:P.id;
 
 ////////////////////////////////////////////////////////////////////////////////
 
 Abstract Syntax Tree
 
-// Only create things in the AST when creating a node or a parent-child pair
-
-create_single_node        = [name]:id;
+create_graph              = [name]:id;
+create_node               = [name]:id;
 create_pc_nodes           = [parent]:id [child]:id;
+

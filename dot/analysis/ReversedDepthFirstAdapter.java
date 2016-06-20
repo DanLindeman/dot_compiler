@@ -32,29 +32,50 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inStart(node);
         node.getEOF().apply(this);
-        node.getPCreateSingleNode().apply(this);
+        node.getPCreateGraph().apply(this);
         outStart(node);
     }
 
-    public void inACreateSingleNode(ACreateSingleNode node)
+    public void inACreateGraph(ACreateGraph node)
     {
         defaultIn(node);
     }
 
-    public void outACreateSingleNode(ACreateSingleNode node)
+    public void outACreateGraph(ACreateGraph node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseACreateSingleNode(ACreateSingleNode node)
+    public void caseACreateGraph(ACreateGraph node)
     {
-        inACreateSingleNode(node);
+        inACreateGraph(node);
         if(node.getName() != null)
         {
             node.getName().apply(this);
         }
-        outACreateSingleNode(node);
+        outACreateGraph(node);
+    }
+
+    public void inACreateNode(ACreateNode node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACreateNode(ACreateNode node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACreateNode(ACreateNode node)
+    {
+        inACreateNode(node);
+        if(node.getName() != null)
+        {
+            node.getName().apply(this);
+        }
+        outACreateNode(node);
     }
 
     public void inACreatePcNodes(ACreatePcNodes node)

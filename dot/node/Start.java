@@ -7,7 +7,7 @@ import dot.analysis.*;
 @SuppressWarnings("nls")
 public final class Start extends Node
 {
-    private PCreateSingleNode _pCreateSingleNode_;
+    private PCreateGraph _pCreateGraph_;
     private EOF _eof_;
 
     public Start()
@@ -16,10 +16,10 @@ public final class Start extends Node
     }
 
     public Start(
-        @SuppressWarnings("hiding") PCreateSingleNode _pCreateSingleNode_,
+        @SuppressWarnings("hiding") PCreateGraph _pCreateGraph_,
         @SuppressWarnings("hiding") EOF _eof_)
     {
-        setPCreateSingleNode(_pCreateSingleNode_);
+        setPCreateGraph(_pCreateGraph_);
         setEOF(_eof_);
     }
 
@@ -27,7 +27,7 @@ public final class Start extends Node
     public Object clone()
     {
         return new Start(
-            cloneNode(this._pCreateSingleNode_),
+            cloneNode(this._pCreateGraph_),
             cloneNode(this._eof_));
     }
 
@@ -37,16 +37,16 @@ public final class Start extends Node
         ((Analysis) sw).caseStart(this);
     }
 
-    public PCreateSingleNode getPCreateSingleNode()
+    public PCreateGraph getPCreateGraph()
     {
-        return this._pCreateSingleNode_;
+        return this._pCreateGraph_;
     }
 
-    public void setPCreateSingleNode(PCreateSingleNode node)
+    public void setPCreateGraph(PCreateGraph node)
     {
-        if(this._pCreateSingleNode_ != null)
+        if(this._pCreateGraph_ != null)
         {
-            this._pCreateSingleNode_.parent(null);
+            this._pCreateGraph_.parent(null);
         }
 
         if(node != null)
@@ -59,7 +59,7 @@ public final class Start extends Node
             node.parent(this);
         }
 
-        this._pCreateSingleNode_ = node;
+        this._pCreateGraph_ = node;
     }
 
     public EOF getEOF()
@@ -90,9 +90,9 @@ public final class Start extends Node
     @Override
     void removeChild(Node child)
     {
-        if(this._pCreateSingleNode_ == child)
+        if(this._pCreateGraph_ == child)
         {
-            this._pCreateSingleNode_ = null;
+            this._pCreateGraph_ = null;
             return;
         }
 
@@ -108,9 +108,9 @@ public final class Start extends Node
     @Override
     void replaceChild(Node oldChild, Node newChild)
     {
-        if(this._pCreateSingleNode_ == oldChild)
+        if(this._pCreateGraph_ == oldChild)
         {
-            setPCreateSingleNode((PCreateSingleNode) newChild);
+            setPCreateGraph((PCreateGraph) newChild);
             return;
         }
 
@@ -127,7 +127,7 @@ public final class Start extends Node
     public String toString()
     {
         return "" +
-            toString(this._pCreateSingleNode_) +
+            toString(this._pCreateGraph_) +
             toString(this._eof_);
     }
 }

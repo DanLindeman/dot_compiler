@@ -75,7 +75,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseACreateSingleNode(ACreateSingleNode node)
+    public void caseACreateGraph(ACreateGraph node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACreateNode(ACreateNode node)
     {
         defaultCase(node);
     }
@@ -94,12 +100,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTSemicolon(TSemicolon node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTColon(TColon node)
     {
         defaultCase(node);
     }
@@ -135,12 +135,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTQuote(TQuote node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTDirectedEdge(TDirectedEdge node)
     {
         defaultCase(node);
@@ -165,25 +159,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTSubgraph(TSubgraph node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTGraph(TGraph node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTNode(TNode node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTEdge(TEdge node)
+    public void caseTSubgraph(TSubgraph node)
     {
         defaultCase(node);
     }
@@ -207,13 +189,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTNumber(TNumber node)
+    public void caseTId(TId node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTId(TId node)
+    public void caseTType(TType node)
     {
         defaultCase(node);
     }

@@ -173,7 +173,7 @@ public class Parser
                 case ACCEPT:
                     {
                         EOF node2 = (EOF) this.lexer.next();
-                        PCreateSingleNode node1 = (PCreateSingleNode) pop().get(0);
+                        PCreateGraph node1 = (PCreateGraph) pop().get(0);
                         Start node = new Start(node1, node2);
                         return node;
                     }
@@ -189,256 +189,130 @@ public class Parser
     {
         switch(reduction)
         {
-            case 0: /* reduce ANodeId */
+            case 0: /* reduce AAgraph1Graph */
             {
                 ArrayList<Object> list = new0();
                 push(goTo(0), list);
             }
             break;
-            case 1: /* reduce AAnodeidedgestatement1EdgeStatement */
+            case 1: /* reduce AAgraph2Graph */
             {
                 ArrayList<Object> list = new1();
-                push(goTo(1), list);
+                push(goTo(0), list);
             }
             break;
-            case 2: /* reduce AAnodeidedgestatement2EdgeStatement */
+            case 2: /* reduce AAedgestmt1EdgeStmt */
             {
                 ArrayList<Object> list = new2();
                 push(goTo(1), list);
             }
             break;
-            case 3: /* reduce AId */
+            case 3: /* reduce AAedgestmt2EdgeStmt */
             {
                 ArrayList<Object> list = new3();
+                push(goTo(1), list);
+            }
+            break;
+            case 4: /* reduce AAnodestmt1NodeStmt */
+            {
+                ArrayList<Object> list = new4();
                 push(goTo(2), list);
             }
             break;
-            case 4: /* reduce AAstatementlist1StatementList */
-            {
-                ArrayList<Object> list = new4();
-                push(goTo(3), list);
-            }
-            break;
-            case 5: /* reduce AAstatementlist2StatementList */
+            case 5: /* reduce AAnodestmt2NodeStmt */
             {
                 ArrayList<Object> list = new5();
-                push(goTo(3), list);
+                push(goTo(2), list);
             }
             break;
-            case 6: /* reduce AAstatementlist3StatementList */
+            case 6: /* reduce ADGraphType */
             {
                 ArrayList<Object> list = new6();
                 push(goTo(3), list);
             }
             break;
-            case 7: /* reduce AAstatementlist4StatementList */
+            case 7: /* reduce AUGraphType */
             {
                 ArrayList<Object> list = new7();
                 push(goTo(3), list);
             }
             break;
-            case 8: /* reduce AAnodestatement1NodeStatement */
+            case 8: /* reduce AId */
             {
                 ArrayList<Object> list = new8();
                 push(goTo(4), list);
             }
             break;
-            case 9: /* reduce AAnodestatement2NodeStatement */
+            case 9: /* reduce AAstatementlist1StatementList */
             {
                 ArrayList<Object> list = new9();
-                push(goTo(4), list);
+                push(goTo(5), list);
             }
             break;
-            case 10: /* reduce ADirectedAssignment */
+            case 10: /* reduce AAstatementlist2StatementList */
             {
                 ArrayList<Object> list = new10();
                 push(goTo(5), list);
             }
             break;
-            case 11: /* reduce AUndirectedAssignment */
+            case 11: /* reduce ADEdgeop */
             {
                 ArrayList<Object> list = new11();
-                push(goTo(5), list);
+                push(goTo(6), list);
             }
             break;
-            case 12: /* reduce AAundirectedgraphtype1GraphType */
+            case 12: /* reduce AUEdgeop */
             {
                 ArrayList<Object> list = new12();
                 push(goTo(6), list);
             }
             break;
-            case 13: /* reduce AAundirectedgraphtype2GraphType */
+            case 13: /* reduce ANodeStatement */
             {
                 ArrayList<Object> list = new13();
-                push(goTo(6), list);
+                push(goTo(7), list);
             }
             break;
-            case 14: /* reduce AAundirectedgraphtype3GraphType */
+            case 14: /* reduce AEdgeStatement */
             {
                 ArrayList<Object> list = new14();
-                push(goTo(6), list);
+                push(goTo(7), list);
             }
             break;
-            case 15: /* reduce AAundirectedgraphtype4GraphType */
+            case 15: /* reduce AAttrStatement */
             {
                 ArrayList<Object> list = new15();
-                push(goTo(6), list);
+                push(goTo(7), list);
             }
             break;
-            case 16: /* reduce AAdirectedgraphtype1GraphType */
+            case 16: /* reduce AAattributelist1AttributeList */
             {
                 ArrayList<Object> list = new16();
-                push(goTo(6), list);
+                push(goTo(8), list);
             }
             break;
-            case 17: /* reduce AAdirectedgraphtype2GraphType */
+            case 17: /* reduce AAattributelist2AttributeList */
             {
                 ArrayList<Object> list = new17();
-                push(goTo(6), list);
+                push(goTo(8), list);
             }
             break;
-            case 18: /* reduce AAdirectedgraphtype3GraphType */
+            case 18: /* reduce AAssignmentList */
             {
                 ArrayList<Object> list = new18();
-                push(goTo(6), list);
+                push(goTo(9), list);
             }
             break;
-            case 19: /* reduce AAdirectedgraphtype4GraphType */
+            case 19: /* reduce AListAssignmentList */
             {
                 ArrayList<Object> list = new19();
-                push(goTo(6), list);
+                push(goTo(9), list);
             }
             break;
-            case 20: /* reduce ANodeStatementStatement */
+            case 20: /* reduce AAssignment */
             {
                 ArrayList<Object> list = new20();
-                push(goTo(7), list);
-            }
-            break;
-            case 21: /* reduce AEdgeStatementStatement */
-            {
-                ArrayList<Object> list = new21();
-                push(goTo(7), list);
-            }
-            break;
-            case 22: /* reduce AAttributeStatementStatement */
-            {
-                ArrayList<Object> list = new22();
-                push(goTo(7), list);
-            }
-            break;
-            case 23: /* reduce AAssignmentStatement */
-            {
-                ArrayList<Object> list = new23();
-                push(goTo(7), list);
-            }
-            break;
-            case 24: /* reduce ASubgraphStatement */
-            {
-                ArrayList<Object> list = new24();
-                push(goTo(7), list);
-            }
-            break;
-            case 25: /* reduce ADirectedEdgeop */
-            {
-                ArrayList<Object> list = new25();
-                push(goTo(8), list);
-            }
-            break;
-            case 26: /* reduce AUndirectedEdgeop */
-            {
-                ArrayList<Object> list = new26();
-                push(goTo(8), list);
-            }
-            break;
-            case 27: /* reduce AGraphAttributeStatement */
-            {
-                ArrayList<Object> list = new27();
-                push(goTo(9), list);
-            }
-            break;
-            case 28: /* reduce ANodeAttributeStatement */
-            {
-                ArrayList<Object> list = new28();
-                push(goTo(9), list);
-            }
-            break;
-            case 29: /* reduce AEdgeAttributeStatement */
-            {
-                ArrayList<Object> list = new29();
-                push(goTo(9), list);
-            }
-            break;
-            case 30: /* reduce AAattributelist1AttributeList */
-            {
-                ArrayList<Object> list = new30();
                 push(goTo(10), list);
-            }
-            break;
-            case 31: /* reduce AAattributelist2AttributeList */
-            {
-                ArrayList<Object> list = new31();
-                push(goTo(10), list);
-            }
-            break;
-            case 32: /* reduce AAattributelist3AttributeList */
-            {
-                ArrayList<Object> list = new32();
-                push(goTo(10), list);
-            }
-            break;
-            case 33: /* reduce AAattributelist4AttributeList */
-            {
-                ArrayList<Object> list = new33();
-                push(goTo(10), list);
-            }
-            break;
-            case 34: /* reduce AAassignmentlist1AssignmentList */
-            {
-                ArrayList<Object> list = new34();
-                push(goTo(11), list);
-            }
-            break;
-            case 35: /* reduce AAassignmentlist2AssignmentList */
-            {
-                ArrayList<Object> list = new35();
-                push(goTo(11), list);
-            }
-            break;
-            case 36: /* reduce AAassignmentlist3AssignmentList */
-            {
-                ArrayList<Object> list = new36();
-                push(goTo(11), list);
-            }
-            break;
-            case 37: /* reduce AAassignmentlist4AssignmentList */
-            {
-                ArrayList<Object> list = new37();
-                push(goTo(11), list);
-            }
-            break;
-            case 38: /* reduce AAsubgraphsubgraphstatement1SubgraphStatement */
-            {
-                ArrayList<Object> list = new38();
-                push(goTo(12), list);
-            }
-            break;
-            case 39: /* reduce AAsubgraphsubgraphstatement2SubgraphStatement */
-            {
-                ArrayList<Object> list = new39();
-                push(goTo(12), list);
-            }
-            break;
-            case 40: /* reduce AAsubgraphsubgraphstatement3SubgraphStatement */
-            {
-                ArrayList<Object> list = new40();
-                push(goTo(12), list);
-            }
-            break;
-            case 41: /* reduce AAsubgraphsubgraphstatement4SubgraphStatement */
-            {
-                ArrayList<Object> list = new41();
-                push(goTo(12), list);
             }
             break;
         }
@@ -447,27 +321,56 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new0() /* reduce ANodeId */
+    ArrayList<Object> new0() /* reduce AAgraph1Graph */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PCreateSingleNode pcreatesinglenodeNode1;
+        PCreateGraph pcreategraphNode1;
         {
             // Block
         TId tidNode2;
-        tidNode2 = (TId)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList2.get(0);
 
-        pcreatesinglenodeNode1 = new ACreateSingleNode(tidNode2);
+        pcreategraphNode1 = new ACreateGraph(tidNode2);
         }
-	nodeList.add(pcreatesinglenodeNode1);
+	nodeList.add(pcreategraphNode1);
         return nodeList;
     }
 
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new1() /* reduce AAnodeidedgestatement1EdgeStatement */
+    ArrayList<Object> new1() /* reduce AAgraph2Graph */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList6 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PCreateGraph pcreategraphNode1;
+        {
+            // Block
+        TId tidNode2;
+        tidNode2 = (TId)nodeArrayList3.get(0);
+
+        pcreategraphNode1 = new ACreateGraph(tidNode2);
+        }
+	nodeList.add(pcreategraphNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new2() /* reduce AAedgestmt1EdgeStmt */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -491,7 +394,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new2() /* reduce AAnodeidedgestatement2EdgeStatement */
+    ArrayList<Object> new3() /* reduce AAedgestmt2EdgeStmt */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -516,7 +419,48 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new3() /* reduce AId */
+    ArrayList<Object> new4() /* reduce AAnodestmt1NodeStmt */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PCreateNode pcreatenodeNode1;
+        {
+            // Block
+        TId tidNode2;
+        tidNode2 = (TId)nodeArrayList1.get(0);
+
+        pcreatenodeNode1 = new ACreateNode(tidNode2);
+        }
+	nodeList.add(pcreatenodeNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new5() /* reduce AAnodestmt2NodeStmt */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PCreateNode pcreatenodeNode1;
+        {
+            // Block
+        TId tidNode2;
+        tidNode2 = (TId)nodeArrayList1.get(0);
+
+        pcreatenodeNode1 = new ACreateNode(tidNode2);
+        }
+	nodeList.add(pcreatenodeNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new6() /* reduce ADGraphType */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -527,17 +471,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new4() /* reduce AAstatementlist1StatementList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new5() /* reduce AAstatementlist2StatementList */
+    ArrayList<Object> new7() /* reduce AUGraphType */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -548,7 +482,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new6() /* reduce AAstatementlist3StatementList */
+    ArrayList<Object> new8() /* reduce AId */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -559,7 +493,18 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new7() /* reduce AAstatementlist4StatementList */
+    ArrayList<Object> new9() /* reduce AAstatementlist1StatementList */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new10() /* reduce AAstatementlist2StatementList */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -571,7 +516,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new8() /* reduce AAnodestatement1NodeStatement */
+    ArrayList<Object> new11() /* reduce ADEdgeop */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -582,7 +527,40 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new9() /* reduce AAnodestatement2NodeStatement */
+    ArrayList<Object> new12() /* reduce AUEdgeop */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new13() /* reduce ANodeStatement */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new14() /* reduce AEdgeStatement */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new15() /* reduce AAttrStatement */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -594,7 +572,19 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new10() /* reduce ADirectedAssignment */
+    ArrayList<Object> new16() /* reduce AAattributelist1AttributeList */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new17() /* reduce AAattributelist2AttributeList */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -607,7 +597,18 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new11() /* reduce AUndirectedAssignment */
+    ArrayList<Object> new18() /* reduce AAssignmentList */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new19() /* reduce AListAssignmentList */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -620,396 +621,10 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new12() /* reduce AAundirectedgraphtype1GraphType */
+    ArrayList<Object> new20() /* reduce AAssignment */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new13() /* reduce AAundirectedgraphtype2GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new14() /* reduce AAundirectedgraphtype3GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new15() /* reduce AAundirectedgraphtype4GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList6 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new16() /* reduce AAdirectedgraphtype1GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new17() /* reduce AAdirectedgraphtype2GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new18() /* reduce AAdirectedgraphtype3GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new19() /* reduce AAdirectedgraphtype4GraphType */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList6 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new20() /* reduce ANodeStatementStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new21() /* reduce AEdgeStatementStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new22() /* reduce AAttributeStatementStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new23() /* reduce AAssignmentStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new24() /* reduce ASubgraphStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new25() /* reduce ADirectedEdgeop */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new26() /* reduce AUndirectedEdgeop */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new27() /* reduce AGraphAttributeStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new28() /* reduce ANodeAttributeStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new29() /* reduce AEdgeAttributeStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new30() /* reduce AAattributelist1AttributeList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new31() /* reduce AAattributelist2AttributeList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new32() /* reduce AAattributelist3AttributeList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new33() /* reduce AAattributelist4AttributeList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new34() /* reduce AAassignmentlist1AssignmentList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new35() /* reduce AAassignmentlist2AssignmentList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new36() /* reduce AAassignmentlist3AssignmentList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new37() /* reduce AAassignmentlist4AssignmentList */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new38() /* reduce AAsubgraphsubgraphstatement1SubgraphStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new39() /* reduce AAsubgraphsubgraphstatement2SubgraphStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new40() /* reduce AAsubgraphsubgraphstatement3SubgraphStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new41() /* reduce AAsubgraphsubgraphstatement4SubgraphStatement */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
@@ -1020,34 +635,82 @@ public class Parser
 
     private static int[][][] actionTable;
 /*      {
-			{{-1, ERROR, 0}, {17, SHIFT, 1}, },
+			{{-1, ERROR, 0}, {8, SHIFT, 1}, {9, SHIFT, 2}, {10, SHIFT, 3}, },
+			{{-1, ERROR, 1}, {9, SHIFT, 2}, {10, SHIFT, 3}, },
+			{{-1, REDUCE, 6}, },
+			{{-1, REDUCE, 7}, },
+			{{-1, ERROR, 4}, {14, ACCEPT, -1}, },
+			{{-1, ERROR, 5}, {12, SHIFT, 7}, },
+			{{-1, ERROR, 6}, {12, SHIFT, 8}, },
+			{{-1, ERROR, 7}, {2, SHIFT, 9}, },
+			{{-1, ERROR, 8}, {2, SHIFT, 10}, },
+			{{-1, ERROR, 9}, {12, SHIFT, 11}, {13, SHIFT, 12}, },
+			{{-1, ERROR, 10}, {12, SHIFT, 11}, {13, SHIFT, 12}, },
+			{{-1, REDUCE, 4}, {4, SHIFT, 18}, {6, SHIFT, 19}, {7, SHIFT, 20}, },
+			{{-1, ERROR, 12}, {4, SHIFT, 18}, },
+			{{-1, REDUCE, 14}, },
+			{{-1, REDUCE, 13}, },
+			{{-1, ERROR, 15}, {3, SHIFT, 24}, },
+			{{-1, REDUCE, 9}, {12, SHIFT, 11}, {13, SHIFT, 12}, },
+			{{-1, ERROR, 17}, {3, SHIFT, 26}, },
+			{{-1, ERROR, 18}, {5, SHIFT, 27}, {12, SHIFT, 28}, },
+			{{-1, REDUCE, 11}, },
+			{{-1, REDUCE, 12}, },
+			{{-1, ERROR, 21}, {12, SHIFT, 32}, },
+			{{-1, REDUCE, 5}, },
+			{{-1, REDUCE, 15}, },
 			{{-1, REDUCE, 0}, },
-			{{-1, ERROR, 2}, {18, ACCEPT, -1}, },
+			{{-1, REDUCE, 10}, },
+			{{-1, REDUCE, 1}, },
+			{{-1, REDUCE, 16}, },
+			{{-1, REDUCE, 8}, },
+			{{-1, ERROR, 29}, {0, SHIFT, 33}, },
+			{{-1, ERROR, 30}, {5, SHIFT, 34}, },
+			{{-1, REDUCE, 18}, {1, SHIFT, 35}, },
+			{{-1, REDUCE, 2}, {4, SHIFT, 18}, },
+			{{-1, ERROR, 33}, {12, SHIFT, 28}, },
+			{{-1, REDUCE, 17}, },
+			{{-1, ERROR, 35}, {12, SHIFT, 28}, },
+			{{-1, REDUCE, 3}, },
+			{{-1, REDUCE, 20}, },
+			{{-1, REDUCE, 19}, },
         };*/
     private static int[][][] gotoTable;
 /*      {
-			{{-1, 2}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
-			{{-1, -1}, },
+			{{-1, 4}, },
+			{{-1, 13}, },
+			{{-1, 14}, },
+			{{-1, 5}, {1, 6}, },
+			{{-1, 29}, {33, 37}, },
+			{{-1, 15}, {10, 17}, {16, 25}, },
+			{{-1, 21}, },
+			{{-1, 16}, },
+			{{-1, 22}, {12, 23}, {32, 36}, },
+			{{-1, 30}, {35, 38}, },
+			{{-1, 31}, },
         };*/
     private static String[] errorMessages;
 /*      {
+			"expecting: 'strict', 'digraph', 'graph'",
+			"expecting: 'digraph', 'graph'",
 			"expecting: id",
 			"expecting: EOF",
+			"expecting: '{'",
+			"expecting: id, type",
+			"expecting: '}', '[', '->', '--', id, type",
+			"expecting: '['",
+			"expecting: '}', id, type",
+			"expecting: '}'",
+			"expecting: ']', id",
+			"expecting: '=', ',', ']'",
+			"expecting: '='",
+			"expecting: ']'",
+			"expecting: ',', ']'",
+			"expecting: '}', '[', id, type",
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 1, 
+			0, 1, 2, 2, 3, 2, 2, 4, 4, 5, 5, 6, 7, 8, 8, 9, 8, 9, 10, 2, 2, 2, 8, 8, 3, 9, 3, 8, 11, 12, 13, 14, 15, 2, 8, 2, 8, 14, 13, 
         };*/
 
     static 
