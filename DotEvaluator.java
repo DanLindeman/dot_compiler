@@ -1,15 +1,34 @@
 import dot.analysis.DepthFirstAdapter;
 import dot.node.ACreateGraph;
-
-import java.util.ArrayList;
+import dot.graph.*;
+import dot.node.ACreateNode;
+import dot.node.ACreatePcNodes;
 
 public class DotEvaluator extends DepthFirstAdapter
 {
-	private ArrayList<String> nodes = new ArrayList<String>();
+    private Graph graph;
 
 	public void outACreateGraph(ACreateGraph node)
 	{
-		System.out.println("Whoa");
-		defaultOut(node);
+        graph = new Graph(node.getName().getText());
+        GraphNode test = new GraphNode("Test");
+        graph.add_node(test);
+        System.out.println(graph.toString());
 	}
+
+    public void outACreateNode(ACreateNode node)
+    {
+        GraphNode current_node = new GraphNode(node.getName().toString());
+        graph.add_node(current_node);
+        System.out.println(graph.toString());
+    }
+
+    public void outACreatePcNodes(ACreatePcNodes node)
+    {
+        GraphNode parent = new GraphNode(node.getParent().toString());
+        GraphNode child = new GraphNode(node.getChild().toString());
+        graph.add_parent_child(parent, child);
+        System.out.println(graph.toString());
+
+    }
 }

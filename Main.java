@@ -19,6 +19,10 @@ public class Main
             InputStreamReader isr = new InputStreamReader(ips);
             PushbackReader pbr = new PushbackReader(isr, 1024);
             Lexer lexer = new Lexer(pbr);
+//            while(lexer.next() != null)
+//            {
+//                System.out.println(lexer.peek());
+//            }
             Parser p = new Parser(lexer);
             Start s = p.parse();
             s.apply(new DotEvaluator());

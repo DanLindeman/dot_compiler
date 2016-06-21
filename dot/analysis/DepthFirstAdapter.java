@@ -70,6 +70,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     @Override
     public void caseACreateNode(ACreateNode node)
     {
+        System.out.print("Create Node?");
         inACreateNode(node);
         if(node.getName() != null)
         {
@@ -91,6 +92,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     @Override
     public void caseACreatePcNodes(ACreatePcNodes node)
     {
+        System.out.print("Create PC Node?");
         inACreatePcNodes(node);
         if(node.getParent() != null)
         {
